@@ -13,7 +13,7 @@ class SheerID_Verify_Block_Script extends Mage_Core_Block_Template
 			return;
 		}
 		?>
-
+		
 		<script type="text/javascript" src="<?php echo $SheerID->baseUrl; ?>/jsapi/SheerID.js"></script>
 		<script type="text/javascript">
 		addSheerIDEventListeners = function() {
@@ -42,9 +42,14 @@ class SheerID_Verify_Block_Script extends Mage_Core_Block_Template
 									wrap.select('.verify-prompt').invoke('hide');
 									wrap.select('.verify-status').invoke('hide');
 								} else {
-									if (resp.allow_upload) {
-										resp.errors.push('<a href="javascript:;" class="link-upload"><?php echo Mage::helper("sheerid_verify")->__("Upload proof of affiliation"); ?></a>');
+									//check if errors are coming back from service
+									//console.log(resp.requestId);
+									if(resp.requestId!=undefined) {
+										if (resp.allow_upload) {
+											resp.errors.push('<a href="javascript:;" class="link-upload"><?php echo Mage::helper("sheerid_verify")->__("Upload proof of affiliation"); ?></a>');
+										}
 									}
+									
 									wrap.select('.verify-messages')[0].addClassName('error').update(resp.errors.join('<br/>'));
 									
 									var uploadLinks = wrap.select('.verify-messages .link-upload');

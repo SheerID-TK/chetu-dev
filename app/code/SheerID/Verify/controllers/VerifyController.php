@@ -39,6 +39,8 @@ class SheerID_Verify_VerifyController extends Mage_Core_Controller_Front_Action
 		$helper = Mage::helper('sheerid_verify');
 		$quote = $helper->getCurrentQuote();
 		$verify_result = $helper->handleVerifyPost($this->getRequest(), $this->getResponse(), $quote);
+		//Mage::log(print_r($verify_result, true), null, 'test.log');
+		
 		if (!$verify_result["result"]) {
 			if ($verify_result["awaiting_upload"]) {
 				$errors =  array($this->__("Please upload supporting documentation to continue the verification process."));
@@ -63,6 +65,12 @@ class SheerID_Verify_VerifyController extends Mage_Core_Controller_Front_Action
 				$resp['message'] = $msg;
 			}
 		}
+		
+		//Send requestId in response
+		if($verify_result['requestId']) {
+			$resp['requestId'] = $verify_result['requestId'];
+		}
+		
 		if ($this->getRequest()->getParam("ajax")) {
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($resp))->sendResponse();
 			exit;
