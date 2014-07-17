@@ -1,0 +1,68 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php   $accessdata = $this->getData('sheerdata')->getEscapedValue();?>
+<label id="label-access" style="display:block"><?php echo $accessdata[1]?></label>
+
+<input type="text" name="groups[settings][fields][access_token][value]"  class=" input-text" id="sheerid_options_settings_access_token" style="display:none" value="<?php echo $accessdata[0]?>" onblur=" return myFunction(this)"/>
+
+<input type="button" name="edit" value="Edit" onclick="getData('<?php echo $this->getData('sheerdata')->getEscapedValue() ?>')"/>
+
+<script type= text/javascript>
+    function getData(accesstoken) { 
+		var myString = accesstoken;
+		<?php $baseurl = Mage::getUrl('SheerID/Verify/ajax'); ?>
+	    url = '<?php echo $baseurl; ?>';
+        new Ajax.Request(url, {
+            method: 'get',
+            dataType: 'json',
+            onSuccess: function(res) {
+			    var response = res.responseText;
+                if (response!="") {
+				document.getElementById('sheerid_options_settings_access_token').style.display = 'block';
+				document.getElementById('label-access').style.display = 'none';
+				document.getElementById('sheerid_options_settings_access_token').value = response;
+                } else {
+                    window.location = oldurl;
+                }
+            },
+            onFailure: function(res) {
+                alert('Invalid Request');
+                jQuery('#loading-mask').css('display', 'none');
+            }
+        });
+
+
+    }
+	function myFunction(){
+	if(document.getElementById('sheerid_options_settings_access_token').value=="")
+	{
+		alert("Please check access token");
+		return false;
+	}
+	}
+</script>
+
