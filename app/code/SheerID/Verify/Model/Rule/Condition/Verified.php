@@ -5,7 +5,6 @@ class SheerID_Verify_Model_Rule_Condition_Verified extends Mage_SalesRule_Model_
 		$options = $this->getAttributeOption();
 		
 		$options['sheerid'] = Mage::helper('sheerid_verify')->__('SheerID Verified Affiliation Status');
-		
 		$this->setAttributeOption($options);
         return $this;
     }
@@ -29,8 +28,9 @@ class SheerID_Verify_Model_Rule_Condition_Verified extends Mage_SalesRule_Model_
 		if ('sheerid' == $this->getAttribute()) {
 			$opts = array();
 			
-			$SheerID = Mage::helper('sheerid_verify/rest')->getService();
-			
+			 $SheerID = Mage::helper('sheerid_verify/rest')->getService();
+			//echo $SheerID="44894464";
+			///die("cool");
 			if ($SheerID) {
 				$types = $SheerID->listAffiliationTypes();
 				foreach ($types as $typeStr) {

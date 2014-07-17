@@ -1,6 +1,11 @@
 <?php
 class SheerID_Verify_Model_Admin_Config_Observer {
 	public function on_config_change() {
+/*	$postdata = Mage::app()->getRequest()->getParams();
+	Mage::log(print_r($postdata['groups']['settings']['fields'],true),null,"log.php");
+	
+	
+	die("here");*/
 		$helper = Mage::helper('sheerid_verify');
 
 		$enabled = $helper->allowSendEmail();

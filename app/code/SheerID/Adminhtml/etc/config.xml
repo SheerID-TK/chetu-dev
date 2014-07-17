@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+		<modules>
+			<SheerID_Adminhtml>
+				<version>1.3.6</version>
+			</SheerID_Adminhtml>
+		</modules>
+		<admin>
+			<routers>
+				<adminhtml>
+					<args>
+						<modules>
+							<Sheerid_Adminhtml before="Mage_Adminhtml">SheerID_Adminhtml</Sheerid_Adminhtml>
+						</modules>
+					</args>
+				</adminhtml>
+			</routers>
+		</admin>
+</config>

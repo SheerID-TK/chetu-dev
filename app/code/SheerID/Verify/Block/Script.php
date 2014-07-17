@@ -44,7 +44,7 @@ class SheerID_Verify_Block_Script extends Mage_Core_Block_Template
 								} else {
 									//check if errors are coming back from service
 									//console.log(resp.requestId);
-									if(resp.requestId!=undefined) {
+								if(resp.requestId!=undefined) {
 										if (resp.allow_upload) {
 											resp.errors.push('<a href="javascript:;" class="link-upload"><?php echo Mage::helper("sheerid_verify")->__("Upload proof of affiliation"); ?></a>');
 										}

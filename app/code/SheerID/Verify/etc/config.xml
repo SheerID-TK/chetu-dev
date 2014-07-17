@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<SheerID_Verify>
-			<version>1.3.6</version>
+			<version>1.3.11</version>
 		</SheerID_Verify>
 	</modules>
 	<global>
@@ -20,6 +20,13 @@
 					<rule_condition_address>SheerID_Verify_Model_Rule_Condition_Verified</rule_condition_address>
 				</rewrite>
 			</salesrule>
+                        
+                        <catalogsrule>
+                            <rewrite>
+                                <rule_condition_address>SheerID_Verify_Model_Rule_Condition_Catalog</rule_condition_address>
+                            </rewrite>
+                        </catalogsrule>
+                        
 		</models>
 		<resources>
 			<sheerid_setup>

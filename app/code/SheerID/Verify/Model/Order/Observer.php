@@ -28,7 +28,7 @@ class SheerID_Verify_Model_Order_Observer
 		$SheerID = Mage::helper('sheerid_verify/rest')->getService();
 		try {
 			$SheerID->updateOrderId($order->getSheeridRequestId(), $order->getRealOrderId());
-		} catch (Exception $e) {}
+		} catch (Exception $e) {			die("11");}
 	}
 	
 	private function trackConversion($order) {

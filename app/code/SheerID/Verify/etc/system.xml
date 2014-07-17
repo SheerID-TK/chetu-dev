@@ -26,13 +26,14 @@
 					<fields>
 						<access_token translate="label">
 							<label>SheerID Access Token</label>
-							<frontend_type>text</frontend_type>
+							<frontend_type>sheerobscure</frontend_type>
 							<sort_order>1</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 							<comment><![CDATA[The token which allows your system to access the SheerID API. Obtained from the <a href="https://www.sheerid.com/home/tokens.html" target="_blank">SheerID Control Center</a>.]]></comment>
 						</access_token>
+
 						<coupon_code_entry translate="label">
 							<label>Verify on Coupon Code Entry</label>
 							<frontend_type>select</frontend_type>
