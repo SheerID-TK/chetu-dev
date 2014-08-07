@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<SheerID_Verify>
+			<active>true</active>
+			<codePool>community</codePool>
+		</SheerID_Verify>
+		<SheerID_Checkout>
+			<active>true</active>
+			<codePool>community</codePool>
+		</SheerID_Checkout>
+	</modules>
+</config>

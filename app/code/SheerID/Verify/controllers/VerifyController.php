@@ -70,7 +70,6 @@ class SheerID_Verify_VerifyController extends Mage_Core_Controller_Front_Action 
         if ($verify_result['requestId']) {
             $resp['requestId'] = $verify_result['requestId'];
         }
-
         if ($this->getRequest()->getParam("ajax")) {
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($resp))->sendResponse();
             exit;
@@ -142,8 +141,12 @@ class SheerID_Verify_VerifyController extends Mage_Core_Controller_Front_Action 
     }
 
     public function claimAction() {
-        $requestId = $this->getRequest()->getParam("requestId");
-        $helper = Mage::helper('sheerid_verify');
+	    $requestId = $this->getRequest()->getParam("requestId");
+		/* set verification variable */
+		$sheer_verification = $requestId;
+		Mage::getSingleton('core/session')->setSheerVerify($sheer_verification);
+        
+		$helper = Mage::helper('sheerid_verify');
         $SheerID = Mage::helper('sheerid_verify/rest')->getService();
         if (!$SheerID || !$requestId) {
             return $this->redirectToHome();
